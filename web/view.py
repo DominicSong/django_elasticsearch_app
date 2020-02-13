@@ -27,5 +27,6 @@ def search(request):
     context['res_cnt'] = res_cnt
     obj_list = [SearchRes(item_dict['_source']) for item_dict in search_res]
     context['list'] = obj_list
+    context['searched'] = 1
     return render(request, 'search.html', context)
     

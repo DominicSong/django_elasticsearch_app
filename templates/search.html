@@ -14,7 +14,8 @@
         </form>
         {% if empty %}
         <p>You must input something!</p>
-        {% else %}
+        {% endif %}
+        {% if searched %}
         <p>共搜索到{{ res_cnt }}条结果</p>
         <table border='1' width=100%>
             <tr>
