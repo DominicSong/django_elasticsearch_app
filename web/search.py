@@ -5,12 +5,12 @@ class ElasticObj:
         self.index_name = index_name
         self.es = Elasticsearch([ip], http_auth=('elastic', 'password'), port=9200)
 
-    def search(self, keyword):
+    def search(self, keyword, field=['title']):
         doc = {
             'query': {
                 'multi_match': {
                     'query': keyword,
-                    'fields': ['title']
+                    'fields': field
                 }
             },
             'size': 1000

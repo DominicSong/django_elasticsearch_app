@@ -4,23 +4,28 @@
         <title>Search</title>
     </head>
     <body>
-        <form action='/search_res/' method='get'>
+        <form action='/search_res/' method='post'>
+            {% csrf_token %}
             <input type='text' name='q'>
+            <input type="checkbox" name="field" value="title" checked="checked">知识标题
+            <input type="checkbox" name="field" value="keyword" checked="checked">关键词集合
+            <input type="checkbox" name="field" value="answer" checked="checked">答案
             <input type='submit' value='Search'>
         </form>
         {% if empty %}
         <p>You must input something!</p>
         {% else %}
+        <p>共搜索到{{ res_cnt }}条结果</p>
         <table border='1' width=100%>
             <tr>
-                <td width=10%>知识标题</td>
+                <td width=15%>知识标题</td>
                 <td width=10%>知识目录</td>
                 <td width=10%>适用单位</td>
                 <td width=10%>关键词集合</td>
-                <td width=10%>知识版本</td>
-                <td>答案</td>
+                <td width=5%>知识版本</td>
+                <td width=35%>答案</td>
                 <td width=10%>关联系1</td>
-                <td width=10%>关联系2</td>
+                <td width=5%>关联系2</td>
             </tr>
             {% for item in list %}
             <tr>
