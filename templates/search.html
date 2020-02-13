@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <meta charset='utf-8' />
+        <title>Search</title>
+    </head>
+    <body>
+        <form action='/search_res/' method='get'>
+            <input type='text' name='q'>
+            <input type='submit' value='Search'>
+        </form>
+        {% if empty %}
+        <p>You must input something!</p>
+        {% else %}
+        <table border='1' width=100%>
+            <tr>
+                <td width=10%>知识标题</td>
+                <td width=10%>知识目录</td>
+                <td width=10%>适用单位</td>
+                <td width=10%>关键词集合</td>
+                <td width=10%>知识版本</td>
+                <td>答案</td>
+                <td width=10%>关联系1</td>
+                <td width=10%>关联系2</td>
+            </tr>
+            {% for item in list %}
+            <tr>
+                <td>{{ item.title }}</td>
+                <td>{{ item.catalogue }}</td>
+                <td>{{ item.enterprise }}</td>
+                <td>{{ item.keyword }}</td>
+                <td>{{ item.version }}</td>
+                <td>{{ item.answer }}</td>
+                <td>{{ item.relation1 }}</td>
+                <td>{{ item.relation2 }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+    </body>
+</html>
